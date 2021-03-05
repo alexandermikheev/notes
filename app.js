@@ -6,7 +6,7 @@ const App = {
         value: "",
         placeholder: "Type ur note",
       },
-      notes: ["task 1", "task 1", "task 2"],
+      notes: ["task 1", "task 2", "task 3"],
     };
   },
   methods: {
@@ -15,6 +15,10 @@ const App = {
 
       // reset
       this.input.value = "";
+    },
+    remove(index) {
+      console.log(`note: ${index} has been removed`);
+      this.notes.splice(index, 1);
     },
   },
 };
