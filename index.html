@@ -10,7 +10,18 @@
   <body>
     <div class="wrapper">
       <!-- vue app start -->
-      <div id="app">{{title}}</div>
+      <div id="app">
+        <h1>{{title}}</h1>
+        <form @submit.prevent="onSubmit">
+          <input
+            type="text"
+            required
+            v-model="input.value"
+            :placeholder="input.placeholder"
+          />
+          <button type="submit">Add new note</button>
+        </form>
+      </div>
       <!-- vue app end -->
     </div>
 
