@@ -12,6 +12,7 @@
       <!-- vue app start -->
       <div id="app">
         <h1>{{title}}</h1>
+
         <form @submit.prevent="onSubmit">
           <input
             type="text"
@@ -21,6 +22,12 @@
           />
           <button type="submit">Add new note</button>
         </form>
+
+        <div class="notes">
+          <div class="note" v-for="(note, index) in notes" :key="index">
+            <p>{{note}}</p>
+          </div>
+        </div>
       </div>
       <!-- vue app end -->
     </div>

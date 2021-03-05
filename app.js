@@ -6,11 +6,15 @@ const App = {
         value: "",
         placeholder: "Type ur note",
       },
+      notes: ["task 1", "task 1", "task 2"],
     };
   },
   methods: {
     onSubmit() {
-      console.log(this.input);
+      this.notes.push(this.input.value);
+
+      // reset
+      this.input.value = "";
     },
   },
 };
