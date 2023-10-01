@@ -6,29 +6,45 @@ const App = {
         value: "",
         placeholder: "Type ur note",
       },
-      notes: ["task 1", "task 2", "task 3"],
+      notes: [{
+                name: "task1",
+                edit: false,
+              },
+              {
+                name: "task2",
+                edit: false,
+              },
+              {
+                name: "task3",
+                edit: false,
+              },
+      ],
     };
   },
   mounted() {
-    this.getNotes();
+     this.getNotes();
   },
-  watch: {
-    notes: {
-      handler(updatedList) {
-        localStorage.setItem("notes", JSON.stringify(updatedList));
-      },
-      deep: true,
-    },
-  },
+   watch: {
+     notes: {
+       handler(updatedList) {
+         localStorage.setItem("notes", JSON.stringify(updatedList));
+     },
+       deep: true,
+     },
+   },
   methods: {
-    getNotes() {
-      const localNotes = localStorage.getItem("notes");
-      if (localNotes) {
-        this.notes = JSON.parse(localNotes);
-      }
-    },
+     getNotes() {
+       const localNotes = localStorage.getItem("notes");
+       if (localNotes) {
+         this.notes = JSON.parse(localNotes);
+       }
+     },
     onSubmit() {
-      this.notes.push(this.input.value);
+      inputObj = {
+        name: this.input.value,
+        edit: false
+      }
+      this.notes.push(inputObj);
 
       // reset
       this.input.value = "";
@@ -37,7 +53,20 @@ const App = {
       console.log(`note: ${index} has been removed`);
       this.notes.splice(index, 1);
     },
-  },
+    edit(name, idx){
+      console.log(name,idx)
+      // this.notes[idx].push(input);
+      this.notes[idx].edit = true
+      console.log(this.notes[idx].edit);
+    },
+    pushEdit(idx){
+      let a = document.querySelectorAll("input")
+      let value = a[1].value
+      this.notes[idx].name = value;
+      this.input.value = ""
+      this.notes[idx].edit = false
+    }
+  }
 };
 
 Vue.createApp(App).mount("#app");

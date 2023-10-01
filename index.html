@@ -24,11 +24,24 @@
         </form>
 
         <div class="notes">
-          <div class="note" v-for="(note, index) in notes" :key="index">
-            <p>
+          <div
+          @dblclick="edit(note.name, index)"
+          class="note"
+          v-for="(note, index) in notes"
+          :key="index"
+          >
+            <p v-if="note.edit === false">
               <span @click="remove(index)">&#10005;</span>
-              {{note}}
+              {{note.name}}
             </p>
+            <form @submit.prevent="pushEdit(index)"
+            v-else>
+            <input
+            type="text"
+            :value="note.name" >
+            <button type="submit">edit</button>
+            </form>
+
           </div>
         </div>
       </div>
