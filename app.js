@@ -56,10 +56,10 @@ const App = {
     edit(idx){
       this.notes[idx].edit = true
     },
-    pushEdit(idx){
-      let a = document.querySelectorAll("input")[1].value
-      this.notes[idx].name = a;
-      this.notes[idx].edit = false
+    pushEdit(name,idx){
+      console.log(name, idx)
+       this.notes[idx].name = name;
+       this.notes[idx].edit = false
     }
   }
 };

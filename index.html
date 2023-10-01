@@ -34,9 +34,10 @@
               <span @click="remove(index)">&#10005;</span>
               {{note.name}}
             </p>
-            <form @submit.prevent="pushEdit(index)"
+            <form @submit.prevent="pushEdit(note.name, index)"
             v-else>
             <input
+            v-model="note.name"
             type="text"
             :value="note.name" >
             <button type="submit">edit</button>
