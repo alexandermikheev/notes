@@ -53,17 +53,12 @@ const App = {
       console.log(`note: ${index} has been removed`);
       this.notes.splice(index, 1);
     },
-    edit(name, idx){
-      console.log(name,idx)
-      // this.notes[idx].push(input);
+    edit(idx){
       this.notes[idx].edit = true
-      console.log(this.notes[idx].edit);
     },
     pushEdit(idx){
-      let a = document.querySelectorAll("input")
-      let value = a[1].value
-      this.notes[idx].name = value;
-      this.input.value = ""
+      let a = document.querySelectorAll("input")[1].value
+      this.notes[idx].name = a;
       this.notes[idx].edit = false
     }
   }
